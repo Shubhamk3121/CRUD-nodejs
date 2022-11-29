@@ -1,0 +1,31 @@
+{
+    "PORT":1999,
+    "Url":"mongodb://localhost:27017/mydb",
+    "baseUrl":"/api",
+    "serverMessage":"Server running on Port 1999",
+    "connectionMessage":"Database is connected ",
+    "collectionName":"Articles",
+    "GET":"/list/:ArticleID",
+    "POST":"/add",
+    "PUT":"/update",
+    "DELETE":"/delete/:ArticleID",
+    "UPLOADS":"/uploads",
+    "storePath":"uploads/",
+    "addMessage":"Nem employee added.",
+    "deleteMessage":"Record Deleted.",
+    "updateMessage":"Record updated."
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

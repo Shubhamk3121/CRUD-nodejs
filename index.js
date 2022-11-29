@@ -1,7 +1,8 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
+const db = require("./connection")
+const constant = require('./constants/constant.json')
 
 const controller = require("../New Project/controllers/ArticleController");
 
@@ -11,23 +12,10 @@ app.use(
     extended: true,
   })
 );
+app.use(constant.UPLOADS,express.static('uploads'));
 
-mongoose.connect("mongodb://localhost:27017/mydb", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const db = mongoose.connection;
+app.use(constant.baseUrl, controller);
 
-db.on("error", (err) => {
-  console.log(err);
-});
-
-db.once("open", () => {
-  console.log("Database is connected ");
-});
-
-app.use("/api", controller);
-
-app.listen(1999, () => {
-  console.log("Server running on Port 1999");
+app.listen(constant.PORT, () => {
+  console.log(constant.serverMessage);
 });

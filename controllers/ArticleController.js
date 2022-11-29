@@ -1,19 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const upload = require("../middleware/upload")
-
+const upload = require("../middleware/upload");
+const constant = require("../constants/constant.json");
 const AS = require("../services/ArticleService");
 
+router.get(constant.GET, AS.getById);
 
+router.post(constant.POST, upload.single("CoverPage"), AS.addData);
 
-router.get("/list/:ArticleId", AS.getById);
+router.delete(constant.DELETE, AS.deleteData);
 
-router.post("/add",upload.single('titleImage'),AS.addData);
-
-router.delete("/delete/:ArticleId", AS.deleteData);
-
-router.put("/update", AS.updateData);
-
-
+router.put(constant.PUT, AS.updateData);
 
 module.exports = router;
